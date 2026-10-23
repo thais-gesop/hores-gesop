@@ -15,6 +15,16 @@
     return;
   }
 
+  // Neteja la URL per si s'hi ha enganxat una barra final, /rest/v1, o l'enllaç del panell de Supabase
+  function netejaUrl(u) {
+    u = String(u || "").trim().replace(/\s+/g, "");
+    const panell = u.match(/supabase\.com\/dashboard\/project\/([a-z0-9]+)/i);
+    if (panell) return `https://${panell[1]}.supabase.co`;
+    if (!/^https?:\/\//i.test(u)) u = "https://" + u;
+    return u.replace(/\/+(rest|auth)\/v1.*$/i, "").replace(/\/+$/, "");
+  }
+  C.SUPABASE_URL = netejaUrl(C.SUPABASE_URL);
+  C.SUPABASE_ANON_KEY = String(C.SUPABASE_ANON_KEY || "").trim();
   const sb = window.supabase.createClient(C.SUPABASE_URL, C.SUPABASE_ANON_KEY, {
     auth: { persistSession: true, autoRefreshToken: true, storageKey: "hores-gesop-auth" }
   });
@@ -96,7 +106,8 @@
   const estatSetmana = (min) => min > LIMIT_MIN ? "passat" : (min >= AVIS_MIN ? "avis" : "ok");
   const LOGO = C.LOGO_URL || "https://gesop.net/wp-content/uploads/2025/12/LogoGesop_White.png";
   const logoHtml = (cls) => `<img class="${cls}" src="${esc(LOGO)}" alt="GESOP" onerror="this.outerHTML='<span class=&quot;${cls} logo-text&quot;>GESOP</span>'">`;
-  const emailDe = (usuari) => `${usuari.trim().toLowerCase()}@${C.DOMINI}`;
+  // "rocio" -> rocio@<DOMINI>; si escriuen un correu sencer (p. ex. toviedo@gesop.net) es fa servir tal qual
+  const emailDe = (usuari) => { const u = usuari.trim().toLowerCase(); return u.includes("@") ? u : `${u}@${C.DOMINI}`; };
 
   function missatgeError(e) {
     const m = (e && (e.message || e.error_description || e.msg)) || String(e);
