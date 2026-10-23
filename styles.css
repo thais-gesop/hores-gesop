@@ -1,0 +1,151 @@
+/* ===========================================================================
+   Registre d'hores · estil GESOP (mateixa paleta que les apps Shiny de GESOP)
+   =========================================================================== */
+:root {
+  --gesop: #0071BC;        /* blau corporatiu */
+  --gesop-fosc: #0b4aa2;   /* botons i títols */
+  --gesop-fosc2: #093f89;  /* hover */
+  --gesop-mig: #3e70b6;    /* accents, pestanya activa */
+  --gesop-clar: #f0f4fb;   /* fons suaus, capçaleres de taula */
+  --vora: #ccd9ee;
+  --text: #0f172a; --text-2: #334155; --gris: #64748b;
+  --fons: #f6f8fc; --blanc: #fff;
+  --verd: #1e7b45; --vermell: #b42318; --groc: #fff4d6;
+  --radi: 5px;
+  --ombra: 0 1px 3px rgba(15, 23, 42, .06), 0 1px 2px rgba(15, 23, 42, .04);
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; min-height: 100%; background: var(--fons); color: var(--text);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif; font-size: 15px; }
+.carregant { padding: 40px; text-align: center; color: var(--gris); }
+h1, h2, h3 { color: var(--gesop-fosc); margin: 0 0 12px; letter-spacing: .1px; }
+h1 { font-size: 1.3em; } h2 { font-size: 1.08em; } h3 { font-size: 1.02em; }
+label { display: block; font-weight: 600; font-size: .88em; color: var(--text-2); margin: 12px 0 5px; }
+input, select, textarea, button { font: inherit; }
+input[type=text], input[type=password], input[type=date], select, textarea {
+  width: 100%; padding: 8px 10px; border: 1px solid #d0d7e2; border-radius: var(--radi); background: var(--blanc); color: var(--text); }
+input:focus, select:focus, textarea:focus { outline: none; border-color: var(--gesop); box-shadow: 0 0 0 3px rgba(0, 113, 188, .18); }
+input.calculat { background: var(--gesop-clar); color: var(--gesop-fosc); font-weight: 600; }
+textarea { min-height: 160px; font-family: Consolas, monospace; font-size: .88em; }
+input[type=checkbox] { accent-color: var(--gesop); }
+button { cursor: pointer; border-radius: var(--radi); padding: 8px 14px; border: 1px solid var(--gesop-fosc);
+  background: var(--blanc); color: var(--gesop-fosc); transition: background .15s, color .15s; }
+button:hover { background: var(--gesop-clar); }
+button.primari { background: var(--gesop-fosc); color: #fff; }
+button.primari:hover { background: var(--gesop-fosc2); }
+button.perill { border-color: var(--vermell); color: var(--vermell); }
+button.perill:hover { background: #fdecea; }
+button.verd { background: var(--verd); border-color: var(--verd); color: #fff; }
+button.verd:hover { background: #17633a; }
+button.petit { padding: 4px 9px; font-size: .85em; }
+button:disabled { opacity: .5; cursor: default; }
+.fila-botons { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 16px; }
+.pista { color: var(--gris); font-size: .82em; margin-top: 4px; }
+.error { color: var(--vermell); font-size: .88em; margin-top: 6px; }
+.resum-form { margin-top: 8px; min-height: 1.3em; color: var(--gesop-fosc); }
+.separador-o { display: flex; align-items: center; gap: 8px; color: var(--gris); font-size: .8em; margin: 14px 0 -4px; }
+.separador-o::before, .separador-o::after { content: ""; flex: 1; border-top: 1px dashed var(--vora); }
+
+/* ---------- login (com a les apps Shiny: fons blau + logo) ---------- */
+.login-fons { min-height: 100vh; background: var(--gesop); display: flex; flex-direction: column;
+  align-items: center; justify-content: center; padding: 24px; gap: 28px; }
+.logo-login { width: 260px; max-width: 70vw; height: auto; }
+.login { width: 380px; max-width: 92vw; background: rgba(255, 255, 255, .97); padding: 26px;
+  border-radius: var(--radi); box-shadow: 0 18px 50px rgba(0, 0, 0, .28); }
+.login h1 { text-align: center; color: var(--text); font-size: 1.2em; }
+.logo-text { color: #fff; font-weight: 800; letter-spacing: 3px; font-size: 2.2em; }
+
+/* ---------- capçalera ---------- */
+.capcalera { display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap;
+  background: var(--gesop); color: #fff; padding: 10px 22px; }
+.marca { display: flex; align-items: center; gap: 14px; }
+.logo-cap { height: 34px; width: auto; }
+.logo-cap.logo-text { font-size: 1.4em; height: auto; }
+.titol-app { font-size: 1.1em; font-weight: 600; padding-left: 14px; border-left: 1px solid rgba(255, 255, 255, .45); }
+.usuari-info { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+.nom-usuari { font-weight: 600; margin-right: 4px; }
+.capcalera button { background: transparent; border-color: rgba(255, 255, 255, .7); color: #fff; }
+.capcalera button:hover { background: rgba(255, 255, 255, .15); }
+.capcalera button.perill { border-color: rgba(255, 255, 255, .7); color: #fff; }
+
+.pestanyes { display: flex; gap: 2px; padding: 0 22px; background: var(--blanc); border-bottom: 1px solid var(--vora); overflow-x: auto; }
+.pestanyes button { border: none; border-bottom: 2px solid transparent; border-radius: 0; padding: 12px 14px;
+  background: none; color: var(--text-2); white-space: nowrap; }
+.pestanyes button:hover { background: var(--gesop-clar); }
+.pestanyes button.activa { color: var(--gesop-fosc); border-bottom-color: var(--gesop-mig); font-weight: 700; }
+main { padding: 20px 22px; max-width: 1400px; margin: 0 auto; }
+
+/* ---------- targetes ---------- */
+.graella { display: grid; grid-template-columns: 370px 1fr; gap: 20px; align-items: start; }
+.targeta { background: var(--blanc); border: 1px solid var(--vora); border-radius: var(--radi); padding: 18px 20px;
+  min-width: 0; box-shadow: var(--ombra); }
+.targeta h2 { padding-bottom: 8px; border-bottom: 1px solid var(--vora); }
+.dues { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.editant { border-color: #e0a800; box-shadow: 0 0 0 3px var(--groc); }
+.resum { margin: 4px 0 12px; color: var(--text-2); }
+.resum b { font-size: 1.15em; color: var(--gesop-fosc); }
+.barra-filtres { display: flex; gap: 12px; flex-wrap: wrap; align-items: end; margin-bottom: 12px; }
+.barra-filtres h2 { border: none; padding: 0; }
+.barra-filtres > div { min-width: 150px; }
+.check { display: flex; gap: 6px; align-items: center; font-weight: normal; color: var(--text); margin: 6px 0; }
+.check input { width: auto; }
+.llista-persones { max-height: 190px; overflow-y: auto; border: 1px solid #d0d7e2; border-radius: var(--radi); padding: 4px 8px; background: #fff; }
+
+/* ---------- comptadors d'hores acumulades ---------- */
+.comptadors { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-bottom: 18px; }
+.comptador { background: var(--blanc); border: 1px solid var(--vora); border-left: 4px solid var(--gesop);
+  border-radius: var(--radi); padding: 12px 16px; box-shadow: var(--ombra); }
+.c-titol { font-size: .8em; font-weight: 700; text-transform: uppercase; letter-spacing: .5px; color: var(--gris); }
+.c-valor { font-size: 1.9em; font-weight: 700; color: var(--gesop-fosc); line-height: 1.25; font-variant-numeric: tabular-nums; }
+.c-sub { font-size: .82em; color: var(--gris); }
+.c-limit { text-transform: none; letter-spacing: 0; font-weight: 400; }
+.barra { height: 6px; background: #e6ecf5; border-radius: 3px; overflow: hidden; margin: 4px 0 6px; }
+.barra-ple { height: 100%; width: 0; background: var(--gesop); transition: width .3s, background .3s; }
+/* taronja quan s'acosta al límit setmanal, vermell si el supera */
+.comptador.avis { border-left-color: #e8890c; background: #fff8ec; }
+.comptador.avis .c-valor { color: #b45f06; }
+.comptador.avis .barra-ple { background: #e8890c; }
+.comptador.passat { border-left-color: var(--vermell); background: #fdecea; }
+.comptador.passat .c-valor, .comptador.passat .c-sub { color: var(--vermell); }
+.comptador.passat .barra-ple { background: var(--vermell); }
+.txt-avis { color: #b45f06; } .txt-passat { color: var(--vermell); }
+.avis-limit { margin-top: 6px; padding: 6px 10px; border-radius: var(--radi); font-size: .85em; }
+.avis-limit.avis { background: #fff8ec; color: #b45f06; border: 1px solid #f5c98a; }
+.avis-limit.passat { background: #fdecea; color: var(--vermell); border: 1px solid #f3b4ae; font-weight: 600; }
+
+/* ---------- taules ---------- */
+.taula-cont { overflow-x: auto; }
+table { width: 100%; border-collapse: collapse; font-size: .9em; }
+th, td { text-align: left; padding: 8px 9px; border-bottom: 1px solid #e6ecf5; vertical-align: top; }
+th { background: var(--gesop-clar); color: var(--gesop-fosc); position: sticky; top: 0; white-space: nowrap; font-weight: 700;
+  border-bottom: 2px solid var(--gesop-mig); }
+tr:hover td { background: #f8faff; }
+td.num { text-align: right; white-space: nowrap; }
+td.accions { white-space: nowrap; }
+.etiqueta { display: inline-block; padding: 2px 8px; border-radius: 10px; font-size: .78em; background: #eef1f6; color: var(--gris); }
+.etiqueta.verda { background: #e3f4ea; color: var(--verd); }
+.etiqueta.groga { background: var(--groc); color: #8a5a00; }
+.buit { color: var(--gris); padding: 22px 8px; text-align: center; }
+code.pwd { font-size: 1.1em; background: var(--gesop-clar); color: var(--gesop-fosc); padding: 2px 6px; border-radius: 4px; }
+hr { border: none; border-top: 1px solid var(--vora); margin: 20px 0; }
+
+/* ---------- avisos i finestres ---------- */
+#toasts { position: fixed; right: 16px; bottom: 16px; display: flex; flex-direction: column; gap: 8px; z-index: 50; }
+.toast { background: #fff; border-left: 5px solid var(--gesop); padding: 10px 14px; border-radius: var(--radi);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, .15); max-width: 380px; }
+.toast.error { border-left-color: var(--vermell); }
+.toast.ok { border-left-color: var(--verd); }
+.modal { position: fixed; inset: 0; background: rgba(15, 23, 42, .45); display: flex; align-items: center; justify-content: center; z-index: 40; padding: 16px; }
+.modal.ocult { display: none; }
+.modal-caixa { background: #fff; border-radius: var(--radi); padding: 20px 22px; width: 100%; max-width: 560px; max-height: 90vh; overflow-y: auto;
+  border-top: 4px solid var(--gesop); }
+
+@media (max-width: 900px) {
+  .graella { grid-template-columns: 1fr; }
+  .comptadors { gap: 8px; }
+  .comptador { padding: 8px 10px; }
+  .c-valor { font-size: 1.35em; }
+  main { padding: 12px; }
+  .capcalera { padding: 10px 14px; }
+  .titol-app { display: none; }
+}

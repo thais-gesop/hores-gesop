@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="ca">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Registre d'hores · GESOP</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="config.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
+</head>
+<body>
+  <div id="app"><div class="carregant">Carregant…</div></div>
+  <div id="toasts"></div>
+  <div id="modal" class="modal ocult" role="dialog" aria-modal="true">
+    <div class="modal-caixa">
+      <h3 id="modal-titol"></h3>
+      <div id="modal-cos"></div>
+      <div id="modal-botons" class="fila-botons"></div>
+    </div>
+  </div>
+  <script src="app.js"></script>
+</body>
+</html>
